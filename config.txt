@@ -1,0 +1,17 @@
+django-admin startproject django_app .
+python manage.py startapp riddles
+python manage.py migrate #sqlite database
+python manage.py createsuperuser
+
+username: hissie
+email: admin@gmail.com
+password: 111
+
+python manage.py startapp entries
+
+#Make migrations
+python manage.py makemigrations
+python manage.py migrate
+
+#in gitbash
+mkdir -p entries/templates/entries

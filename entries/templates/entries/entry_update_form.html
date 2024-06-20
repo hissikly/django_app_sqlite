@@ -1,0 +1,19 @@
+{% extends "entries/base.html" %} 
+<!-- Добавляем ссылку на родительский шаблон. -->
+{% block content %}
+   <form method="post">
+         {% csrf_token %} 
+         <!-- Обязательная проверка того, что пользователь сам отправляет форму. -->
+       {{ form.as_p }} 
+       <input type="submit" value="Сохранить">
+   </form>
+   {% if entry %}
+       <a href="{% url 'entry-detail' entry.id %}">
+           <button>Отмена</button>
+       </a>
+   {% else %}
+       <a href="{% url 'entry-list' %}">
+           <button>Отмена</button>
+       </a>
+   {% endif %}
+{% endblock %}

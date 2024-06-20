@@ -1,0 +1,18 @@
+{% extends "entries/base.html" %} 
+<!-- Добавляем ссылку на родительский шаблон. -->
+{% block content %}
+   <form method="post"> {% csrf_token %}
+ 
+ 
+       <p> 
+        <!-- Добавляем текст предупреждения о том, что планируется удаление записи с её названием и датой создания. -->
+           <!-- Вы действительно хотите удалить -->
+           <em>"{{ entry.title }}"</em>
+           созданную {{ entry.date_created|date:'Y-m-d' }}?
+       </p>
+       <input type="submit" value="Подтвердить"> 
+   </form>
+   <a href="{% url 'entry-detail' entry.id %}">
+       <button>Отмена</button>
+   </a>
+{% endblock %}
